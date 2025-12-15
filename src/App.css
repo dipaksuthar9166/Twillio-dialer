@@ -1,38 +1,67 @@
-.App {
-  text-align: center;
+/* Add this to your main CSS file (index.css or App.css) */
+
+/* Base style for the glowing cards */
+.glow-pink::before,
+.glow-green::before,
+.glow-purple::before,
+.glow-indigo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.75rem; /* Match the rounded-xl */
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* --- Hover/Active State Styling --- */
+/* The key to the effect: a background gradient used on the :before pseudo-element */
+
+/* Pink Glow (TOTAL CALLS) */
+.glow-pink::before {
+    /* Top-left to bottom-right gradient fade */
+    opacity: 1; /* Keep it always visible as in the source image */
+    background: linear-gradient(
+        135deg,
+        rgba(236, 72, 153, 0.2) 0%, /* Pink */
+        rgba(255, 255, 255, 0.05) 40%, /* Fade White/Transparent */
+        rgba(124, 58, 237, 0.1) 100% /* Subtle Purple secondary glow */
+    );
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Green Glow (SUCCESS RATE) */
+.glow-green::before {
+    opacity: 1;
+    background: linear-gradient(
+        135deg,
+        rgba(16, 185, 129, 0.2) 0%, /* Green */
+        rgba(255, 255, 255, 0.05) 40%,
+        rgba(251, 191, 36, 0.1) 100% /* Subtle Yellow/Gold secondary glow */
+    );
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Purple Glow (AVG DURATION / TOTAL MESSAGES) */
+.glow-purple::before {
+    opacity: 1;
+    background: linear-gradient(
+        135deg,
+        rgba(124, 58, 237, 0.2) 0%, /* Purple */
+        rgba(255, 255, 255, 0.05) 40%,
+        rgba(249, 115, 22, 0.1) 100% /* Subtle Orange secondary glow */
+    );
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Indigo Glow (PEAK HOURS / TOTAL USERS) */
+.glow-indigo::before {
+    opacity: 1;
+    background: linear-gradient(
+        135deg,
+        rgba(99, 102, 241, 0.2) 0%, /* Indigo/Blue */
+        rgba(255, 255, 255, 0.05) 40%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
 }

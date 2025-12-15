@@ -1,13 +1,342 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add this to your main CSS file (index.css or App.css) */
+
+/* Base style for the glowing cards */
+.glow-pink::before,
+.glow-green::before,
+.glow-purple::before,
+.glow-indigo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.75rem;
+    /* Match the rounded-xl */
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    /* Initially hidden */
+    transition: opacity 0.3s ease;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* --- Hover/Active State Styling --- */
+/* The key to the effect: a background gradient used on the :before pseudo-element */
+
+/* Pink Glow (TOTAL CALLS) */
+.glow-pink::before {
+    /* Top-left to bottom-right gradient fade */
+    opacity: 1;
+    /* Keep it always visible as in the source image */
+    background: linear-gradient(135deg,
+            rgba(236, 72, 153, 0.2) 0%,
+            /* Pink */
+            rgba(255, 255, 255, 0.05) 40%,
+            /* Fade White/Transparent */
+            rgba(124, 58, 237, 0.1) 100%
+            /* Subtle Purple secondary glow */
+        );
+}
+
+/* Green Glow (SUCCESS RATE) */
+.glow-green::before {
+    opacity: 1;
+    background: linear-gradient(135deg,
+            rgba(16, 185, 129, 0.2) 0%,
+            /* Green */
+            rgba(255, 255, 255, 0.05) 40%,
+            rgba(251, 191, 36, 0.1) 100%
+            /* Subtle Yellow/Gold secondary glow */
+        );
+}
+
+/* Purple Glow (AVG DURATION / TOTAL MESSAGES) */
+.glow-purple::before {
+    opacity: 1;
+    background: linear-gradient(135deg,
+            rgba(124, 58, 237, 0.2) 0%,
+            /* Purple */
+            rgba(255, 255, 255, 0.05) 40%,
+            rgba(249, 115, 22, 0.1) 100%
+            /* Subtle Orange secondary glow */
+        );
+}
+
+/* Indigo Glow (PEAK HOURS / TOTAL USERS) */
+.glow-indigo::before {
+    opacity: 1;
+    background: linear-gradient(135deg,
+            rgba(99, 102, 241, 0.2) 0%,
+            /* Indigo/Blue */
+            rgba(255, 255, 255, 0.05) 40%,
+            rgba(255, 255, 255, 0.05) 100%);
+}
+
+
+/* Global CSS */
+
+:root {
+    color-scheme: light;
+    --bg-body: #f5f7fb;
+    --bg-card: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #4b5563;
+    --border-soft: rgba(203, 213, 225, 0.8);
+}
+
+:root[data-theme='dark'],
+.dark {
+    color-scheme: dark;
+    --bg-body: #0f172a;
+    --bg-card: #1f2937;
+    --text-primary: #f3f4f6;
+    --text-secondary: #cbd5f5;
+    --border-soft: rgba(148, 163, 184, 0.4);
+}
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark .bg-white {
+    background-color: var(--bg-card) !important;
+}
+
+.dark .bg-gray-50,
+.dark .bg-slate-50 {
+    background-color: #111827 !important;
+}
+
+.dark .text-gray-900,
+.dark .text-gray-800,
+.dark .text-gray-700 {
+    color: var(--text-primary) !important;
+}
+
+.dark .text-gray-600,
+.dark .text-gray-500 {
+    color: var(--text-secondary) !important;
+}
+
+.dark .border-gray-100,
+.dark .border-gray-200,
+.dark .border-slate-200 {
+    border-color: var(--border-soft) !important;
+}
+
+.dark .shadow,
+.dark .shadow-lg,
+.dark .shadow-xl {
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.7) !important;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.custom-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.custom-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.stagger-animation>* {
+    opacity: 0;
+    /* Start hidden */
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.stagger-animation>*:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.stagger-animation>*:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.stagger-animation>*:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.stagger-animation>*:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.stagger-animation>*:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+/* WhatsApp-Style Animations */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.animate-slideInLeft {
+    animation: slideInLeft 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-slideInRight {
+    animation: slideInRight 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.2s ease-out forwards;
+}
+
+.animate-fadeInUp {
+    animation: fadeInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-scaleIn {
+    animation: scaleIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Smooth transitions for all interactive elements */
+button,
+a,
+.transition-all {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover effects */
+.hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Message bubble animations */
+.message-bubble {
+    animation: fadeInUp 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Typing indicator animation */
+@keyframes typing {
+
+    0%,
+    60%,
+    100% {
+        transform: translateY(0);
+    }
+
+    30% {
+        transform: translateY(-10px);
+    }
+}
+
+.typing-dot {
+    animation: typing 1.4s infinite;
+}
+
+.typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Landing Page Animations */
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate-twinkle {
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+.animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradient-x 8s ease infinite;
+}
+
+@keyframes gradient-x {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }

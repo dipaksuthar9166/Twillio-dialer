@@ -1,0 +1,321 @@
+/* Page Transitions */
+.page-transition-enter {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.page-transition-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms, transform 300ms;
+}
+
+/* Card/Component Animations */
+.card-entrance {
+    animation: card-slide-up 0.5s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.card-entrance:nth-child(1) { animation-delay: 0.1s; }
+.card-entrance:nth-child(2) { animation-delay: 0.2s; }
+.card-entrance:nth-child(3) { animation-delay: 0.3s; }
+.card-entrance:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes card-slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Button & Interactive Elements */
+.btn-gradient-animated {
+    background-size: 200% 200%;
+    background-image: linear-gradient(45deg, #4F46E5, #818CF8, #4F46E5);
+    animation: gradient-shift 4s ease infinite;
+}
+
+@keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* List Item Animations */
+.list-item-enter {
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+.list-item-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms, transform 300ms;
+}
+
+/* Hover & Focus Effects */
+.hover-lift {
+    transition: transform 0.2s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-2px);
+}
+
+.hover-scale {
+    transition: transform 0.2s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.02);
+}
+
+/* Loading & Progress */
+.loading-pulse {
+    animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Micro-interactions */
+.input-focus-effect {
+    position: relative;
+}
+
+.input-focus-effect::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #4F46E5;
+    transition: width 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.input-focus-effect:focus-within::after {
+    width: 100%;
+}
+
+/* Success/Error Animations */
+.success-checkmark {
+    animation: scale-check 0.5s ease-in-out;
+}
+
+@keyframes scale-check {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Notification & Alert Animations */
+.alert-slide-in {
+    animation: slide-in-right 0.5s ease-out;
+}
+
+@keyframes slide-in-right {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Form Field Animations */
+.field-float-label {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.field-float-label input:focus ~ label,
+.field-float-label input:not(:placeholder-shown) ~ label {
+    transform: translateY(-1.5rem) scale(0.85);
+    color: #4F46E5;
+}
+
+.field-float-label label {
+    position: absolute;
+    left: 0.5rem;
+    top: 0.5rem;
+    transition: transform 0.2s, color 0.2s;
+    transform-origin: 0 0;
+    pointer-events: none;
+}
+
+/* Card Grid Animations */
+.grid-item-appear {
+    animation: fade-scale 0.5s ease forwards;
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+@keyframes fade-scale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Section transitions */
+.section-enter {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.section-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+}
+/* ========= WHATSAPP WEB 2025 - PERFECT CLONE CSS ========= */
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Message Bubble Animation */
+.animate-in {
+  animation: slideInFromBottom 0.35s ease-out forwards;
+}
+
+/* Chat Background (Exact WhatsApp Texture) */
+.bg-whatsapp-chat {
+  background-color: #ece5dd;
+  background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
+  background-repeat: repeat;
+  background-size: 400px;
+}
+
+/* Input Box Focus Glow (Original WhatsApp) */
+.input-glow:focus {
+  box-shadow: 0 0 0 2px rgba(0, 168, 132, 0.3) !important;
+}
+
+/* Unread Badge (Perfect Green Circle) */
+.unread-badge {
+  background-color: #00a884 !important;
+  color: white !important;
+  font-weight: 700 !important;
+  font-size: 11px !important;
+  min-width: 20px !important;
+  height: 20px !important;
+  border-radius: 9999px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Conversation List Hover & Selected */
+.conv-item:hover {
+  background-color: #f0f2f5 !important;
+}
+
+.conv-item.selected {
+  background-color: #f0f2f5 !important;
+}
+
+/* Double Tick Icon (Blue when delivered/read) */
+.tick-sent {
+  color: #53bdeb !important;
+}
+
+/* Message Tail (Perfect Triangle) */
+.message-tail {
+  position: absolute;
+  bottom: 0;
+  width: 12px;
+  height: 12px;
+}
+
+.message-tail-self {
+  right: -4px;
+}
+
+.message-tail-other {
+  left: -4px;
+}
+
+.message-tail div {
+  position: absolute;
+  bottom: 2px;
+  width: 12px;
+  height: 12px;
+  background: inherit;
+  transform: rotate(45deg);
+  border-radius: 2px;
+}
+
+/* Scrollbar Hide (WhatsApp Style) */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Online Status Dot */
+.online-dot {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 10px;
+  height: 10px;
+  background-color: #00d95f;
+  border: 2px solid #00a884;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 212, 95, 0.6);
+}
+
+/* Typing Indicator (Bonus) */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px;
+  background: white;
+  border-radius: 20px;
+  font-size: 13px;
+  color: #666;
+}
+
+.typing-dot {
+  width: 7px;
+  height: 7px;
+  background: #999;
+  border-radius: 50%;
+  animation: typing 1.4s infinite;
+}
+
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typing {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}

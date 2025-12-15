@@ -1,0 +1,10 @@
+                        {isMessageCenterOpen && !isCollapsed && (
+                            <div className="space-y-1 rounded-2xl bg-gray-100 dark:bg-white/5 px-3 py-2">
+                                <NestedLink to="/all-sms-history" icon={ClipboardDocumentListIcon}>All SMS History</NestedLink>
+                                <NestedLink to="/campaign-report" icon={DocumentChartBarIcon}>Campaign Report</NestedLink>
+                                <NestedLink to="/auto-messages" icon={ClockIcon}>Auto Messages</NestedLink>
+                                <NestedLink to="/single-sms" icon={ChatBubbleBottomCenterTextIcon}>Single SMS</NestedLink>
+                                <NestedLink to="/bulk-messaging" icon={ChatBubbleLeftRightIcon}>Bulk Messaging</NestedLink>
+                                <NestedLink to="/message-templates" icon={DocumentTextIcon}>Message Templates</NestedLink>
+                            </div>
+                        )}
