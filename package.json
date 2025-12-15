@@ -1,7 +1,6 @@
 {
   "name": "app",
   "version": "0.1.0",
-  "homepage": "https://github.com/dipaksuthar9166/Twillio-dialer.git",
   "private": true,
   "dependencies": {
     "@heroicons/react": "^2.2.0",
